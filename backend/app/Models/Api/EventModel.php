@@ -5,14 +5,11 @@ namespace App\Models\Api;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompanyModel extends Model
+class EventModel extends Model
 {
     use HasFactory;
 
-    protected $table = "companies";
-
+    protected $table = "events";
 
     // protected $primaryKey = 'uuid';
-
-    protected $hidden = ["bearer_token"];
 }
