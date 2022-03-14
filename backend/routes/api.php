@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\Api\OnboardingController;
 use App\Http\Controllers\Api\TimeInVisitorLogApiController;
 use App\Http\Controllers\Api\TimeOutVisitorLogApiController;
 use Illuminate\Http\Request;
@@ -33,7 +34,10 @@ Route::middleware(['BearerTokenVmsApiMiddleware'])->prefix('visitor')->group(fun
 Route::middleware(['BearerTokenVmsApiMiddleware'])->prefix('company')->group(function () {
 
     Route::get('/', [CompanyController::class, 'getCompanyInfo']);
+    Route::get('/categories', [CompanyController::class, 'getCompanyInfo']);
 });
+
+Route::post('/onboarding-company', [OnboardingController::class, 'getOnboardingDetails']);
 
 
 // Route::domain('{account}.example.com')->group(function () {
