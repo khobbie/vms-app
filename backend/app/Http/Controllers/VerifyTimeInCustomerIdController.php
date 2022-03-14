@@ -33,22 +33,22 @@ class VerifyTimeInCustomerIdController extends Controller
         }
 
         try {
-             $sMSApiService = new SMSApiService();
-                $sms = $sMSApiService->call_sms_api(1, , "Message");
+            $sMSApiService = new SMSApiService();
+            // $sms = $sMSApiService->call_sms_api(1, , "Message");
         } catch (\Throwable $th) {
             //throw $th;
         }
 
 
-        $timeInVisitorLogApiModel = new TimeInVisitorLogApiModel();
-        $timeInVisitorLogApiModel->country_phone_code = $request->settings->countryCode;
-        $timeInVisitorLogApiModel->event_id = $request->settings->eventId;
-        $timeInVisitorLogApiModel->branch_id = $request->settings->branchId;
-        $timeInVisitorLogApiModel->branch_device_location = $request->settings->location;
+        // $timeInVisitorLogApiModel = new TimeInVisitorLogApiModel();
+        // $timeInVisitorLogApiModel->country_phone_code = $request->settings->countryCode;
+        // $timeInVisitorLogApiModel->event_id = $request->settings->eventId;
+        // $timeInVisitorLogApiModel->branch_id = $request->settings->branchId;
+        // $timeInVisitorLogApiModel->branch_device_location = $request->settings->location;
 
-        $timeInVisitorLogApiModel->customer_id = $request->visitor->customerId;
-        $timeInVisitorLogApiModel->fullName = $request->visitor->fullName;
-        $timeInVisitorLogApiModel->category_id = $request->visitor->customerId;
-        $timeInVisitorLogApiModel->typeOfVisit = $request->visitor->typeOfVisit;
+        // $timeInVisitorLogApiModel->customer_id = $request->visitor->customerId;
+        // $timeInVisitorLogApiModel->fullName = $request->visitor->fullName;
+        // $timeInVisitorLogApiModel->category_id = $request->visitor->customerId;
+        // $timeInVisitorLogApiModel->typeOfVisit = $request->visitor->typeOfVisit;
     }
 }
