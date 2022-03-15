@@ -118,7 +118,7 @@ class TimeInVisitorLogApiController extends Controller
             'settings.countryCode' => 'required | numeric',
             'visitor.customerId' => 'required | numeric',
             'visitor.fullName' => 'required',
-            'visitor.category' => 'required',
+            'visitor.category_id' => 'required',
             'visitor.typeOfVisit' => 'required',
             'visitor.typeDescription' => 'required',
             'visitor.verification_token_uuid' => 'required',
@@ -157,7 +157,7 @@ class TimeInVisitorLogApiController extends Controller
 
                 $timeInVisitorLogApiModel->customer_id = $visitor->customerId;
                 $timeInVisitorLogApiModel->fullName = $visitor->fullName;
-                $timeInVisitorLogApiModel->category_id = $visitor->customerId;
+                $timeInVisitorLogApiModel->category_id = $visitor->category_id;
                 $timeInVisitorLogApiModel->typeOfVisit = $visitor->typeOfVisit;
                 $timeInVisitorLogApiModel->type_description = $visitor->typeDescription;
                 $timeInVisitorLogApiModel->time_in = NOW();

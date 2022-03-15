@@ -36,30 +36,25 @@ class OnboardingController extends Controller
         $company_id = $request->company_id;
         $company_onboarding_id = $request->company_onboarding_id;
 
-        $company = CompanyModel::where('company_id', $company_id)
+        $company = CompanyInfoModel::where('company_id', $company_id)
             ->where('onboarding_id', $company_onboarding_id)->first();
 
 
 
 
         if (!is_null($company)) {
-            $company_id = $request->company_id;
-            $company = CompanyInfoModel::where('company_id', $company_id)->get();
-            $categories = CategoryModel::where('company_id', $company_id)->get();
-            $branches = BranchModel::where('company_id', $company_id)->get();
-            $events = EventModel::where('company_id', $company_id)->get();
+            // $company_id = $request->company_id;
+            // $company = CompanyInfoModel::where('company_id', $company_id)->get();
+            // $categories = CategoryModel::where('company_id', $company_id)->get();
+            // $branches = BranchModel::where('company_id', $company_id)->get();
+            // $events = EventModel::where('company_id', $company_id)->get();
             // $countries = CountryModel::get();
 
             return response()->json([
                 "code" => "000",
                 "message" => "Company's details",
-                "data" => [
-                    "company" => $company,
-                    "categories" => $categories,
-                    "branches" => $branches,
-                    "events" => $events,
-                    // "countries" => $countries
-                ]
+                "data" => $company
+
             ], 200);
         } else {
             return response()->json([

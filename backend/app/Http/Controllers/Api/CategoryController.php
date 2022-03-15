@@ -14,7 +14,7 @@ class CategoryController extends Controller
         $categories = CategoryModel::where('company_id', $company_id)->get();
         return response()->json([
             "code" => "000",
-            "message" => "Company's details",
+            "message" => "Company's categories",
             "data" => $categories
         ], 200);
     }
