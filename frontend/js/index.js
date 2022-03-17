@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    if (localStorage.company == undefined || localStorage.company == "") {
+        window.location = "onboarding.html";
+    }
 
     let company = JSON.parse(localStorage.company)
     let settings = JSON.parse(localStorage.settings)

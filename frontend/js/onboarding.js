@@ -91,7 +91,7 @@ $(document).ready(function() {
                 } else {
                     $("#onboard-company-form-btn").prop("disabled", false);
                     $("#onboard-company-form-btn").text("Submit");
-                    showAlert("error", res.message);
+                    showAlert("error", res.message, 2700);
                 }
                 console.log(res);
             },

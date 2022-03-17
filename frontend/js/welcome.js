@@ -160,7 +160,7 @@ $(document).ready(function() {
     })
 
     $(".close_btn").click(function(e) {
-        if (localStorage.has_settings == false) {
+        if (localStorage.has_settings == 'false') {
             showAlert("error", "Please finish set up", 3000);
             return
         } else {
@@ -208,7 +208,7 @@ $(document).ready(function() {
 
         localStorage.company = JSON.stringify(company)
         localStorage.settings = JSON.stringify(settings)
-        localStorage.has_settings = true
+        localStorage.has_settings = "true"
 
         showAlert("success", "Application setup successful", 4000);
         $(".settings-form-display").css("display", "none");

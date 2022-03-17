@@ -58,7 +58,7 @@ class OnboardingController extends Controller
             ], 200);
         } else {
             return response()->json([
-                "code" => "000",
+                "code" => "404",
                 "message" => "Invalid company ID or Onboarding ID",
                 "data" => null
             ], 200);
