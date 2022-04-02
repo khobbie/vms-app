@@ -1,26 +1,5 @@
 $(document).ready(function() {
-    db.get("mittens")
-        .then(function(doc) {
-            // okay, doc contains our document
-            console.log(db.name);
-        })
-        .catch(function(err) {
-            // oh noes! we got an error
-            console.log("hey");
-        });
 
-    // var doc = {
-    //     company_id: token,
-    //     name: "Mittens",
-    //     occupation: "kitten",
-    //     age: 3,
-    //     hobbies: [
-    //         "playing with balls of yarn",
-    //         "chasing laser pointers",
-    //         "lookin' hella cute",
-    //     ],
-    // };
-    // db.put(doc);
 
     let base_url = "http://127.0.0.1:8000/api";
 

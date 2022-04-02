@@ -123,6 +123,7 @@ $(document).ready(function() {
                         });
                     }
                 } else {
+                    return;
 
                 }
             },
@@ -152,9 +153,12 @@ $(document).ready(function() {
             return
         } else {
 
+
+
             $(".visitor-welcome-display").css("display", "none");
             $(".settings-form-display").css("display", "block");
             $('#onboarding-id-form').modal('hide');
+
             getCompanyInfoSettings();
         }
     })

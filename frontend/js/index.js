@@ -4,6 +4,11 @@ $(document).ready(function() {
         window.location = "onboarding.html";
     }
 
+    // setTimeout(function() {
+    //     getCompanyCategories();
+
+    // }, 1000);
+
     let company = JSON.parse(localStorage.company)
     let settings = JSON.parse(localStorage.settings)
 
@@ -72,11 +77,7 @@ $(document).ready(function() {
         });
     }
 
-    setTimeout(function() {
-        getCompanyCategories();
-        // getBranches();
-        // getEvents();
-    }, 1000);
+
 
     $("#visitor-form").submit(function(e) {
         e.preventDefault();

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./css/pin_code.css" />
+
+    <title>V-checkout</title>
+    <style>
+        a:link {
+            text-decoration: none;
+            color: black;
+        }
+        
+        a:visited {
+            text-decoration: none;
+            color: black;
+        }
+        
+        a:hover {
+            text-decoration: none;
+            color: black;
+        }
+        
+        a:active {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .visitor-welcome-display {
+            display: block;
+        }
+        
+        .settings-form-display {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="container" style="background-color: #e8eaed">
+    <br />
+    <div class="container visitor-welcome-display">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <button type="button" class="btn-close btn-dark float-end close_btn" aria-label="Close"></button>
+
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form autocomplete="off" aria-autocomplete="off" zoom: 1.1;>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control form-control-lg" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="" /> &nbsp;
+                            <button class="btn btn-outline-success" type="button" id="button-addon2">
+                  Verify Phone Number
+                </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+
+
+                <div class="col-md-5">
+                    <a href="#" class="loading-page">
+                        <div class="card card-body text-left" style="margin-bottom: 10px">
+                            <div class="bd-example">
+                                <dl>
+                                    <dt>Name</dt>
+                                    <dd><span class="display-6"> Kwabena Ampah</span></dd>
+
+                                    <dt>Gender</dt>
+                                    <dd><span class="lead">Male</span></dd>
+
+                                    <dt>Category</dt>
+                                    <dd><span class="lead">Visitation</span></dd>
+
+                                    <dt>Purpose</dt>
+                                    <dd>
+                                        <span class="lead">Coe from his house. My boyfriend is cheating and i want
+                        to know where is all the time</span
+                      >
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          
+                <div class="col-md-3">
+                    <a href="./index.html" class="loading-page">
+                        <div class="card card-body text-center" style="margin-bottom: 10px">
+                            <i class="bi bi-person-heart" style="font-size: 12rem"></i>
+
+                            <div class=" ">
+                                <h1 class="card-title"></h1>
+                                <!-- <p class="card-text">Some quick example text to build .</p> -->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+        </div>
+
+        <br>
+
+               <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#verify-code-pin-modal">Continue</button>
+                    </div>
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+        <br />
+      
+      </div>
+    </div>
+
+    <br /><br /><br /><br />
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="verify-code-pin-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <h5 class="modal-title text-center" id="exampleModalLabel">
+              Enter Previous Code
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+              <form autocomplete="off" aria-autocomplete="off" id="verify-form">
+              <div class="pin-code">
+                <input type="number" id="token_1" maxlength="1" autofocus />
+                <input type="number" id="token_2" maxlength="1" />
+                <input type="number" id="token_3" maxlength="1" />
+                <input type="number" id="token_4" maxlength="1" />
+
+                
+              </div>
+
+              <br>
+              <div class="flaot-end text-right"><span class="text-success" style="cursor:pointer">Resend Code</span></div>
+
+                            <br>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" id="verify-visitor-form-btn loading-page" class="btn btn-primary btn-lg">Verify</button>
+                            </div>
+                            </form>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="resetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Are you sure, Reset ?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h2 class="text-danger">RESET APPLICATION</h2>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+                        <button type="button" class="btn btn-primary submit-reset-app-btn">
+              Reset
+            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div id="like_button_container"></div> -->
+
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+
+
+        <!-- Load our React component. -->
+        <!-- <script src="like_button.js"></script> -->
+
+        <script src="./js/pin_code.js"></script>
+        <script src="./js/auth_token.js"></script>
+        <script src="./js/welcome.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $(".loading-page").click(function(e) {
+                    Swal.showLoading();
+                });
+            });
+        </script>
+</body>
+
+</html>
