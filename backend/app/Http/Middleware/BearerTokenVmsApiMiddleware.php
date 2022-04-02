@@ -42,6 +42,7 @@ class BearerTokenVmsApiMiddleware
 
         $request->company_id  = $company->company_id;
         $request->company_name  = $company->name;
+        $request->country_code  = $company->countryCode;
 
         return $next($request);
     }

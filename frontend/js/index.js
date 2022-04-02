@@ -4,10 +4,10 @@ $(document).ready(function() {
         window.location = "onboarding.html";
     }
 
-    // setTimeout(function() {
-    //     getCompanyCategories();
+    setTimeout(function() {
+        getCompanyCategories();
 
-    // }, 1000);
+    }, 1000);
 
     let company = JSON.parse(localStorage.company)
     let settings = JSON.parse(localStorage.settings)

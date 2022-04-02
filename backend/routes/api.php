@@ -30,6 +30,7 @@ Route::middleware(['BearerTokenVmsApiMiddleware'])->prefix('visitor')->group(fun
     Route::post('/check-in', [TimeInVisitorLogApiController::class, 'checkIn']);
     Route::post('/verify-check-out', [TimeOutVisitorLogApiController::class, 'verifyCheckOut']);
     Route::post('/check-out', [TimeOutVisitorLogApiController::class, 'checkOut']);
+    Route::get('/resend-check-out-code/{customer_id}', [TimeOutVisitorLogApiController::class, 'resendCheckOutCode']);
 });
 
 Route::middleware(['BearerTokenVmsApiMiddleware'])->prefix('company')->group(function () {

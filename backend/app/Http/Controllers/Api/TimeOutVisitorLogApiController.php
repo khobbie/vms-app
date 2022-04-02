@@ -81,6 +81,69 @@ class TimeOutVisitorLogApiController extends Controller
         }
     }
 
+    public function resendCheckOutCode(Request $request, $customer_id)
+    {
+        $company_id = $request->company_id;
+        $customer_id = $request->customer_id;
+        $country_code = $request->country_code;
+
+        $notification = SMSNotificationModel::where('company_id', $company_id)->where('customer_id', $customer_id)->whereDate('created_at', Carbon::today())->first();
+
+        # Forming visitor number
+        $destination = trim($country_code) . trim($customer_id);
+
+        # Generate token
+        $token = $notification->token;
+
+
+        $sms_message = "Visitor token: $token";
+
+        # Use SMS Service
+        $sMSApiService = new SMSApiService();
+        $sms = $sMSApiService->call_sms_api($request->company_name, $destination, $sms_message);
+
+        if ($sms->ok()) {
+
+            # INSERT INTO SMS NOTIFICATION TABLE
+            $sMSNotificationModel = new SMSNotificationModel();
+            $sMSNotificationModel->company_id = $company_id;
+            $sMSNotificationModel->branch_id = $notification->branch_id;
+            $sMSNotificationModel->event_id = $notification->event_id;
+            $sMSNotificationModel->country_phone_code = $notification->country_phone_code;
+            $sMSNotificationModel->customer_id = $notification->customer_id;
+            $sMSNotificationModel->token = $token;
+            $sMSNotificationModel->message = $sms_message;
+            $sMSNotificationModel->type = "OUT";
+            $sMSNotificationModel->who = "VISITOR";
+
+
+            if ($sMSNotificationModel->save()) {
+
+                $sms_details = SMSNotificationModel::where("id", $sMSNotificationModel->id)->first();
+                // return $sms_details->uuid;
+
+
+                return response()->json([
+                    'code' => '000',
+                    'message' => "Token code has been resent",
+                    'data' => NULL
+                ], 200);
+            } else {
+                return response()->json([
+                    'code' => '500',
+                    'message' => "Something went wrong",
+                    'data' => NULL
+                ], 200);
+            }
+        } else {
+            return response()->json([
+                'code' => '500',
+                'message' => "Failed to resend token code",
+                'data' => NULL
+            ], 200);
+        }
+    }
+
     public function checkOut(Request $request)
     {
 

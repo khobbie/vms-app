@@ -50,13 +50,23 @@ class TimeInVisitorLogApiController extends Controller
             $token = (string) mt_rand(1000, 9999);
 
 
-            $sms_message = "Check-in token: $token";
+            $sms_message = "Visitor token: $token";
 
             # Use SMS Service
             $sMSApiService = new SMSApiService();
             $sms = $sMSApiService->call_sms_api($request->company_name, $destination, $sms_message);
-
+            // return $sms;
             if ($sms->ok()) {
+
+                $res = explode("|", $sms->body());
+
+                if ($res[0] != '1701') {
+                    return response()->json([
+                        'code' => '500',
+                        'message' => "Incorrect phone number",
+                        'data' => NULL
+                    ], 200);
+                }
 
                 # INSERT INTO SMS NOTIFICATION TABLE
                 $sMSNotificationModel = new SMSNotificationModel();
@@ -68,6 +78,7 @@ class TimeInVisitorLogApiController extends Controller
                 $sMSNotificationModel->token = $token;
                 $sMSNotificationModel->message = $sms_message;
                 $sMSNotificationModel->type = "IN";
+                $sMSNotificationModel->who = "VISITOR";
 
 
                 if ($sMSNotificationModel->save()) {
