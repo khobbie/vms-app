@@ -38,6 +38,7 @@ class TimeOutVisitorLogApiController extends Controller
 
         $settings = (object) $request->settings;
         $visitor = (object) $request->visitor;
+        $company_id = $request->company_id;
 
 
 
@@ -56,15 +57,24 @@ class TimeOutVisitorLogApiController extends Controller
             // $sMSApiService = new SMSApiService();
             // $sms = $sMSApiService->call_sms_api($request->company_name, $destination, $sms_message);
 
-            $customer = TimeInVisitorLogApiModel::where('customer_id', trim($visitor->customerId))->whereDate('created_at', Carbon::today())->first();
+            $customer = TimeInVisitorLogApiModel::where('customer_id', trim($visitor->customerId))->whereDate('created_at', Carbon::today())->orderBy('id', 'DESC')->first();
 
             if (!is_null($customer)) {
 
-                return response()->json([
-                    'code' => '000',
-                    'message' => "You are about to check out",
-                    'data' => $customer
-                ], 200);
+                if ($customer->is_out == 'YES') {
+                    return response()->json([
+                        'code' => '001',
+                        'message' => "Sorry, visitor has already checked out",
+                        'data' => $customer
+                    ], 200);
+                } else {
+
+                    return response()->json([
+                        'code' => '000',
+                        'message' => "You are about to check out",
+                        'data' => $customer
+                    ], 200);
+                }
             } else {
                 return response()->json([
                     'code' => '500',
@@ -157,6 +167,7 @@ class TimeOutVisitorLogApiController extends Controller
             'settings.countryCode' => 'required | numeric',
             'visitor.customerId' => 'required | numeric',
             'visitor.visitor_log_uuid' => 'required',
+            'visitor.token' => 'required',
         ]);
 
         # Validating request
@@ -171,6 +182,7 @@ class TimeOutVisitorLogApiController extends Controller
 
         $settings = (object) $request->settings;
         $visitor = (object) $request->visitor;
+        $company_id = $request->company_id;
 
 
 
@@ -189,10 +201,32 @@ class TimeOutVisitorLogApiController extends Controller
             // $sMSApiService = new SMSApiService();
             // $sms = $sMSApiService->call_sms_api($request->company_name, $destination, $sms_message);
 
+            $notification = SMSNotificationModel::where('company_id', $company_id)->where('customer_id', trim($visitor->customerId))->whereDate('created_at', Carbon::today())->orderBy('id', 'DESC')->first();
+
+            if (is_null($notification)) {
+                return response()->json([
+                    'code' => '500',
+                    'message' => "Customer phone number has not checked in",
+                    'data' => NULL
+                ], 200);
+            }
+
+            if ($notification->token != $visitor->token) {
+                return response()->json([
+                    'code' => '500',
+                    'message' => "Incorrect code entered",
+                    'data' => NULL
+                ], 200);
+            }
+
+
+
+
             $customer = TimeInVisitorLogApiModel::where('customer_id', trim($visitor->customerId))->where('uuid', $visitor->visitor_log_uuid)->first();
 
             if (!is_null($customer)) {
-                $sms_message = "Bye, See you again; $customer->fullName";
+
+                $sms_message = "Bye, See you again. $customer->fullName";
 
 
                 # Update check out for visitor in the visitor log table
@@ -223,7 +257,7 @@ class TimeOutVisitorLogApiController extends Controller
 
                 return response()->json([
                     'code' => '000',
-                    'message' => "Bye, See you again; $customer->fullName",
+                    'message' => $sms_message,
                     'data' => NULL
                 ], 200);
             } else {

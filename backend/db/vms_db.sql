@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2022 at 12:26 AM
+-- Generation Time: Apr 03, 2022 at 08:52 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -80,7 +80,7 @@ CREATE TABLE `branches` (
 --
 
 INSERT INTO `branches` (`id`, `uuid`, `company_id`, `name`, `description`, `location`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, '44444444444555555', '00000', 'Accra, Ghana Branch', 'Collection of money point', '235 Laterbikorshie Ponpon Links, Oblogo Road', 'kwabena', NULL, '2022-03-09 15:28:36');
+(1, 'yhke-383jks-djueo-eujd', '00000', 'Accra, Ghana Branch', 'Collection of money point', '235 Laterbikorshie Ponpon Links, Oblogo Road', 'kwabena', NULL, '2022-03-09 15:28:36');
 
 --
 -- Triggers `branches`
@@ -456,6 +456,7 @@ DELIMITER ;
 CREATE TABLE `sms_notifications` (
   `id` int(15) NOT NULL,
   `uuid` varchar(50) DEFAULT NULL,
+  `who` varchar(10) DEFAULT 'VISITOR',
   `type` varchar(10) NOT NULL,
   `company_id` varchar(20) NOT NULL,
   `branch_id` varchar(50) NOT NULL,
@@ -470,40 +471,6 @@ CREATE TABLE `sms_notifications` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sms_notifications`
---
-
-INSERT INTO `sms_notifications` (`id`, `uuid`, `type`, `company_id`, `branch_id`, `event_id`, `country_phone_code`, `customer_id`, `message`, `token`, `status`, `is_verified`, `verified_at`, `created_at`, `updated_at`) VALUES
-(1, '9968d0a29f2611ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 5756', '5756', 'SENT', 'NO', NULL, '2022-03-08 21:23:48', '2022-03-08 21:23:48'),
-(2, 'b7dcac199f2611ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 2060', '2060', 'SENT', 'NO', NULL, '2022-03-08 21:24:39', '2022-03-08 21:24:39'),
-(3, 'ba41e6b39f2d11ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 1330', '1330', 'SENT', 'NO', NULL, '2022-03-08 22:14:50', '2022-03-08 22:14:50'),
-(4, 'e55950319f2d11ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 8589', '8589', 'SENT', 'NO', NULL, '2022-03-08 22:16:02', '2022-03-08 22:16:02'),
-(5, '1b47c96f9f2e11ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 7053', '7053', 'SENT', 'NO', NULL, '2022-03-08 22:17:33', '2022-03-08 22:17:33'),
-(6, '387049559f2e11ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 2228', '2228', 'SENT', 'NO', NULL, '2022-03-08 22:18:21', '2022-03-08 22:18:21'),
-(7, '61c2d5349f2e11ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 9775', '9775', 'SENT', 'NO', NULL, '2022-03-08 22:19:31', '2022-03-08 22:19:31'),
-(8, '8b4264f19f2e11ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 8874', '8874', 'SENT', 'NO', NULL, '2022-03-08 22:20:40', '2022-03-08 22:20:40'),
-(9, 'd71db62e9f2e11ecb82354ee75bcf4ce', 'IN', '2354726', '7830293', '467382', '233', '554602954', 'Check-in token: 2958', '2958', 'SENT', 'NO', NULL, '2022-03-08 22:22:48', '2022-03-08 22:22:48'),
-(10, '3a822b46a19011ecaab954ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '554602954', 'Check-in token: 4903', '4903', 'SENT', 'NO', NULL, '2022-03-11 23:08:50', '2022-03-11 23:08:50'),
-(11, '9878f9efa38011eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '44444', 'Check-in token: 6121', '6121', 'SENT', 'NO', NULL, '2022-03-14 10:21:35', '2022-03-14 10:21:35'),
-(12, 'a2249ef3a39111eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '554602954', 'Check-in token: 5599', '5599', 'SENT', 'NO', NULL, '2022-03-14 12:23:17', '2022-03-14 12:23:17'),
-(13, '282ca879a39211eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '0554602954', 'Check-in token: 1028', '1028', 'SENT', 'NO', NULL, '2022-03-14 12:27:02', '2022-03-14 12:27:02'),
-(14, '4da67c7ba39211eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '554602954', 'Check-in token: 2863', '2863', 'SENT', 'NO', NULL, '2022-03-14 12:28:05', '2022-03-14 12:28:05'),
-(15, '981e10bca39211eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '554602954', 'Check-in token: 8858', '8858', 'SENT', 'NO', NULL, '2022-03-14 12:30:10', '2022-03-14 12:30:10'),
-(16, '71ea3945a39511eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '554602954', 'Check-in token: 4069', '4069', 'SENT', 'NO', NULL, '2022-03-14 12:50:34', '2022-03-14 12:50:34'),
-(17, '8b552ec9a39511eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '554602954', 'Check-in token: 9094', '9094', 'SENT', 'NO', NULL, '2022-03-14 12:51:17', '2022-03-14 12:51:17'),
-(18, '1ffda469a39611eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '554602954', 'Check-in token: 3490', '3490', 'SENT', 'NO', NULL, '2022-03-14 12:55:26', '2022-03-14 12:55:26'),
-(19, '590c8db1a39611eca96354ee75bcf4ce', 'IN', '00000', '7830293', '467382', '233', '554602954', 'Check-in token: 2657', '2657', 'SENT', 'YES', '2022-03-14 12:59:30', '2022-03-14 12:57:02', '2022-03-14 12:59:30'),
-(20, '90720d45a49411eca96354ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '233', '554602954', 'Check-in token: 3829', '3829', 'SENT', 'NO', NULL, '2022-03-15 19:15:49', '2022-03-15 19:15:49'),
-(21, '0d6e0cf7a49511eca96354ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '233', '554602954', 'Check-in token: 1430', '1430', 'SENT', 'YES', '2022-03-15 19:19:44', '2022-03-15 19:19:19', '2022-03-15 19:19:44'),
-(22, '8ec80c8ea49711eca96354ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '233', '554602954', 'Check-in token: 9959', '9959', 'SENT', 'NO', NULL, '2022-03-15 19:37:15', '2022-03-15 19:37:15'),
-(23, 'ae496153a49711eca96354ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '233', '554602954', 'Check-in token: 8117', '8117', 'SENT', 'YES', '2022-03-15 19:39:27', '2022-03-15 19:38:08', '2022-03-15 19:39:27'),
-(24, '6cd9faf8a49811eca96354ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '233', '554602954', 'Check-in token: 4156', '4156', 'SENT', 'NO', NULL, '2022-03-15 19:43:28', '2022-03-15 19:43:28'),
-(25, '7dc911ffa57711ec9f8d54ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '57', '207955915', 'Check-in token: 2043', '2043', 'SENT', 'NO', NULL, '2022-03-16 22:21:57', '2022-03-16 22:21:57'),
-(26, '87c240e0a57711ec9f8d54ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '57', '207955915', 'Check-in token: 8990', '8990', 'SENT', 'NO', NULL, '2022-03-16 22:22:13', '2022-03-16 22:22:13'),
-(27, '05887125a57811ec9f8d54ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '233', '554602954', 'Check-in token: 8064', '8064', 'SENT', 'YES', '2022-03-16 22:26:46', '2022-03-16 22:25:44', '2022-03-16 22:26:46'),
-(28, '3f982ca7a57811ec9f8d54ee75bcf4ce', 'IN', '00000', '44444444444555555', '57008b3b9fbe11ecb82354ee75bcf4ce', '233', '207955915', 'Check-in token: 1643', '1643', 'SENT', 'YES', '2022-03-16 22:27:56', '2022-03-16 22:27:22', '2022-03-16 22:27:56');
 
 --
 -- Triggers `sms_notifications`
@@ -525,6 +492,7 @@ CREATE TABLE `visitor_logs` (
   `country_phone_code` varchar(5) NOT NULL,
   `customer_id` varchar(20) NOT NULL,
   `fullName` varchar(225) NOT NULL,
+  `gender` varchar(10) DEFAULT 'MALE',
   `typeOfVisit` varchar(30) DEFAULT 'INDIVIDUAL',
   `type_description` varchar(225) DEFAULT NULL,
   `company_id` varchar(20) NOT NULL,
@@ -541,17 +509,6 @@ CREATE TABLE `visitor_logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `visitor_logs`
---
-
-INSERT INTO `visitor_logs` (`id`, `uuid`, `country_phone_code`, `customer_id`, `fullName`, `typeOfVisit`, `type_description`, `company_id`, `department_id`, `branch_id`, `branch_device_location`, `event_id`, `is_first_time`, `category_id`, `purpose_description`, `time_in`, `time_out`, `is_out`, `created_at`, `updated_at`) VALUES
-(1, 'b199baf7a39611eca96354ee75bcf4ce', '233', '554602954', 'df', 'IDIVIDUAL', 'O', '00000', NULL, '7830293', 'sdgdf', '467382', 'NO', '2', NULL, '2022-03-14 12:59:30', NULL, 'NO', '2022-03-14 12:59:30', '2022-03-14 12:59:30'),
-(2, '1c39d094a49511eca96354ee75bcf4ce', '233', '554602954', 'Kwabena', 'IDIVIDUAL', 'O', '00000', NULL, '44444444444555555', 'Ghana', '57008b3b9fbe11ecb82354ee75bcf4ce', 'NO', '1', NULL, '2022-03-15 19:19:44', NULL, 'NO', '2022-03-15 19:19:44', '2022-03-15 19:19:44'),
-(3, 'dd2f4159a49711eca96354ee75bcf4ce', '233', '554602954', 'kWABNE', 'IDIVIDUAL', 'O', '00000', NULL, '44444444444555555', 'Ghana', '57008b3b9fbe11ecb82354ee75bcf4ce', 'NO', '972aefd99fbe11ecb82354ee75bcf4ce', NULL, '2022-03-15 19:39:27', NULL, 'NO', '2022-03-15 19:39:27', '2022-03-15 19:39:27'),
-(4, '2a6dcaaea57811ec9f8d54ee75bcf4ce', '233', '554602954', 'Kwabena', 'IDIVIDUAL', 'O', '00000', NULL, '44444444444555555', 'Ghana', '57008b3b9fbe11ecb82354ee75bcf4ce', 'NO', '972aefd99fbe11ecb82354ee75bcf4ce', NULL, '2022-03-16 22:26:46', NULL, 'NO', '2022-03-16 22:26:46', '2022-03-16 22:26:46'),
-(5, '53c76c2fa57811ec9f8d54ee75bcf4ce', '233', '207955915', 'Christian', 'IDIVIDUAL', 'O', '00000', NULL, '44444444444555555', 'Ghana', '57008b3b9fbe11ecb82354ee75bcf4ce', 'NO', '972aefd99fbe11ecb82354ee75bcf4ce', NULL, '2022-03-16 22:27:56', NULL, 'NO', '2022-03-16 22:27:56', '2022-03-16 22:27:56');
 
 --
 -- Triggers `visitor_logs`
@@ -645,13 +602,13 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `sms_notifications`
 --
 ALTER TABLE `sms_notifications`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `visitor_logs`
 --
 ALTER TABLE `visitor_logs`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,13 +13,13 @@ class SMSApiService
         try {
 
             $response = Http::get('https://sms.nalosolutions.com/smsbackend/clientapi/Syn_Afriq/send-message/', [
-                'username' => 'BlueFS_sms',
-                'password' => 'pass1234',
-                'type' => '1',
+                'username' => env("SMS_USERNAME"),
+                'password' => env("SMS_PASSWORD"),
+                'type' =>  env("SMS_TYPE"),
                 'destination' => $destination,
-                'source' => 'BlueFS',
+                'source' =>  env("SMS_SOURCE"),
                 'message' => $message,
-                'dlr' => '1'
+                'dlr' =>  env("SMS_DLR")
             ]);
 
             return $response;
