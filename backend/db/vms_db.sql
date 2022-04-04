@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2022 at 08:52 PM
+-- Generation Time: Apr 04, 2022 at 02:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -30,25 +30,25 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `company_id_generator_func` () RETURN
  declare company_id int;
  declare checker_d int;
  declare count_d int;
-
+ 
 
    SET checker_d = 'true';
    SET count_d = 0;
 
    company_id_loop:LOOP
-
-	 select floor(1000000 + RAND() * 9999999) INTO company_id ;
-
-	 SELECT count(c.id) INTO count_d
-	 FROM companies c
+     
+	 select floor(1000000 + RAND() * 9999999) INTO company_id ; 
+	 
+	 SELECT count(c.id) INTO count_d 
+	 FROM companies c 
 	 WHERE c.company_id = company_id;
-
+	 
 	 IF count_d > 0 THEN
         ITERATE company_id_loop;
 	 ELSE
 	 	LEAVE company_id_loop;
 	 END IF;
-
+	 
    end loop company_id_loop;
 
    RETURN company_id;
@@ -80,7 +80,7 @@ CREATE TABLE `branches` (
 --
 
 INSERT INTO `branches` (`id`, `uuid`, `company_id`, `name`, `description`, `location`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 'yhke-383jks-djueo-eujd', '00000', 'Accra, Ghana Branch', 'Collection of money point', '235 Laterbikorshie Ponpon Links, Oblogo Road', 'kwabena', NULL, '2022-03-09 15:28:36');
+(1, 'yhke-383jks-djueo-eujd', '2783310', 'Accra, Ghana Branch', 'Collection of money point', '235 Laterbikorshie Ponpon Links, Oblogo Road', 'kwabena', NULL, '2022-03-09 15:28:36');
 
 --
 -- Triggers `branches`
@@ -113,7 +113,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `uuid`, `company_id`, `name`, `description`, `is_selected`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, '972aefd99fbe11ecb82354ee75bcf4ce', '00000', 'Customer Complaince', 'My money is missing from bank account', 'YES', 'Joy', '2022-03-09 15:33:22', '2022-03-09 15:31:33');
+(1, '972aefd99fbe11ecb82354ee75bcf4ce', '2783310', 'Customer Complaince', 'My money is missing from bank account', 'YES', 'Joy', '2022-04-04 11:47:31', '2022-03-09 15:31:33');
 
 --
 -- Triggers `categories`
@@ -145,7 +145,7 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `uuid`, `company_id`, `name`, `bearer_token`, `onboarding_id`, `country`, `dial_code`) VALUES
-(1, '98b1e0bb9cd411ecb82354ee75bcf4ce', '00000', 'Union Systems Global', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5MjM5Y2Q4MC05NjViLTQ3YjUtODE3Ni1mOTI3YWViYTk4NmIiLCJqdGkiOiIyMDcxNTU0MmFmY2I2ZDE4YjVhOTc5NTkyMzU0ZmVjOTFmMDk2ZTExNGMzOTFlOThkNDIxNjNiYzcyZGUwMTE4NGI4MTNhNWJlOTc4OGU5MCIsImlhdCI6MTYwNzc2OTc1NywibmJmIjoxNjA3NzY5NzU3LCJleHAiOjE2MzkzMDU3NTcsInN1YiI6IiIsInNjb3BlcyI6WyJncHMiXX0.QgRsUWYMVHDD80SokvdD0KptYKmCI5GHOW-fbxxp3kLdvINiZTq0gHrhd1FuRABIlkaMJoBdr2tDq0JnuAXgIMQVaFPW1pN5DyYuwuxcyJWcSSs7XUViLOY4HjJiDPa3mynk-SB4JlSDllGLTUfhKDnAjAzfuMSuERyRxMqUvg6MRHZZlteMBBRU-FpAMEVg4KYofv4fxz_VMb3Fw-GD9hFaa4z-1ax5fAoYbAMvoI0KOHgU_EiD_2bsxpHxQjIhHnzPpJ54zVr_9rBsabn_zEtVqzGznfO6cxhmEoizDv3lqUMLop7fuuFexyOHrlq68KoNjG5-jdfyAgqKXJ5RKtxBOPW5BavQAo7CwjiwHSDQhnB1H96iwLoo9h5hs8-xfWCz6B0Mb7lk8Qg3T2yL6abA-6cFaJl1YRlyVnGlf8HabEz7QJOcSyw6vi6Aqo9xzuHmNWkuCdgQdeUqniaN_Z6QfCgiTkhZUfTIsPNGK-DV3PCqTq3tnOJhY1DSFmehesocYPx4KX9C0Ls6e8z6pIwW6FPn4p3tYXLkD4SKnHOJKZK_rsrKU20DYHy7Wsdl9FitJ5htdDGxJyHe_1Ftyb0HlCQUKdRHq4pBy6Xxp4qm5AYq4sh1YxGcdVlvIr3cHrBZhjZE4J79MH3lPOcF5NX9Bnpq3Mw7KBB4bQ-8vH4', '11111', 'Ghana', '233');
+(1, '98b1e0bb9cd411ecb82354ee75bcf4ce', '2783310', 'Union Systems Global', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5MjM5Y2Q4MC05NjViLTQ3YjUtODE3Ni1mOTI3YWViYTk4NmIiLCJqdGkiOiIyMDcxNTU0MmFmY2I2ZDE4YjVhOTc5NTkyMzU0ZmVjOTFmMDk2ZTExNGMzOTFlOThkNDIxNjNiYzcyZGUwMTE4NGI4MTNhNWJlOTc4OGU5MCIsImlhdCI6MTYwNzc2OTc1NywibmJmIjoxNjA3NzY5NzU3LCJleHAiOjE2MzkzMDU3NTcsInN1YiI6IiIsInNjb3BlcyI6WyJncHMiXX0.QgRsUWYMVHDD80SokvdD0KptYKmCI5GHOW-fbxxp3kLdvINiZTq0gHrhd1FuRABIlkaMJoBdr2tDq0JnuAXgIMQVaFPW1pN5DyYuwuxcyJWcSSs7XUViLOY4HjJiDPa3mynk-SB4JlSDllGLTUfhKDnAjAzfuMSuERyRxMqUvg6MRHZZlteMBBRU-FpAMEVg4KYofv4fxz_VMb3Fw-GD9hFaa4z-1ax5fAoYbAMvoI0KOHgU_EiD_2bsxpHxQjIhHnzPpJ54zVr_9rBsabn_zEtVqzGznfO6cxhmEoizDv3lqUMLop7fuuFexyOHrlq68KoNjG5-jdfyAgqKXJ5RKtxBOPW5BavQAo7CwjiwHSDQhnB1H96iwLoo9h5hs8-xfWCz6B0Mb7lk8Qg3T2yL6abA-6cFaJl1YRlyVnGlf8HabEz7QJOcSyw6vi6Aqo9xzuHmNWkuCdgQdeUqniaN_Z6QfCgiTkhZUfTIsPNGK-DV3PCqTq3tnOJhY1DSFmehesocYPx4KX9C0Ls6e8z6pIwW6FPn4p3tYXLkD4SKnHOJKZK_rsrKU20DYHy7Wsdl9FitJ5htdDGxJyHe_1Ftyb0HlCQUKdRHq4pBy6Xxp4qm5AYq4sh1YxGcdVlvIr3cHrBZhjZE4J79MH3lPOcF5NX9Bnpq3Mw7KBB4bQ-8vH4', 'A72GUIB', 'Ghana', '233');
 
 --
 -- Triggers `companies`
@@ -166,7 +166,7 @@ CREATE TABLE `countries` (
   `uuid` varchar(50) DEFAULT NULL,
   `country_code` varchar(5) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
-  `dial_code` varchar(6) DEFAULT NULL,
+  `dail_code` varchar(6) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -175,7 +175,7 @@ CREATE TABLE `countries` (
 -- Dumping data for table `countries`
 --
 
-INSERT INTO `countries` (`id`, `uuid`, `country_code`, `country`, `dial_code`, `created_at`, `updated_at`) VALUES
+INSERT INTO `countries` (`id`, `uuid`, `country_code`, `country`, `dail_code`, `created_at`, `updated_at`) VALUES
 (2, 'fa9d466b9fc611ecb82354ee75bcf4ce', 'BRN', 'Brunei', '673', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (3, 'fa9e292c9fc611ecb82354ee75bcf4ce', 'BDI', 'Burundi', '257', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 'fa9eb63f9fc611ecb82354ee75bcf4ce', 'CPV', 'Cape Verde', '238', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -437,7 +437,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `uuid`, `company_id`, `name`, `description`, `location`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, '57008b3b9fbe11ecb82354ee75bcf4ce', '00000', 'Office Visitstion', 'Monday to Friday at office', 'Kasoa', '989', NULL, '2022-03-09 15:29:45');
+(1, '57008b3b9fbe11ecb82354ee75bcf4ce', '2783310', 'Office Visitstion', 'Monday to Friday at office', 'Kasoa', '989', NULL, '2022-03-09 15:29:45');
 
 --
 -- Triggers `events`
