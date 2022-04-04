@@ -168,6 +168,7 @@ class TimeInVisitorLogApiController extends Controller
 
                 $timeInVisitorLogApiModel->customer_id = $visitor->customerId;
                 $timeInVisitorLogApiModel->fullName = $visitor->fullName;
+                $timeInVisitorLogApiModel->purpose_description = $visitor->purpose;
                 $timeInVisitorLogApiModel->category_id = $visitor->category_id;
                 $timeInVisitorLogApiModel->typeOfVisit = $visitor->typeOfVisit;
                 $timeInVisitorLogApiModel->type_description = $visitor->typeDescription;
