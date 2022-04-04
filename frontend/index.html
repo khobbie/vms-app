@@ -34,7 +34,8 @@
                     <br /><br /><br />
                     <form autocomplete="off" aria-autocomplete="off" id="visitor-form">
                         <div class="input-group input-group-lg mb-3">
-                            <span class="input-group-text">&nbsp; +233 &nbsp;</span> &nbsp;&nbsp;
+                            <span class="input-group-text">&nbsp; +<span class="dial_code"></span> &nbsp;</span>
+                            &nbsp;&nbsp;
 
                             <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
                         </div>

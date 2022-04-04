@@ -26,7 +26,7 @@ $(document).ready(function() {
                     if (countries.length > 0) {
                         countries.map((country) => {
                             $(".country_list").append(`
-                                    <option value="${country.dail_code}" selected>${country.country}</option>
+                                    <option value="${country.dial_code}" selected>${country.country}</option>
                                 `);
                         });
                     }

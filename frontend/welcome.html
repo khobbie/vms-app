@@ -113,71 +113,96 @@
         </div>
     </div>
 
-    <br /><br /><br /><br />
+    <br /><br />
 
     <div class="container settings-form-display">
         <div class="container">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-outline-danger float-end close_btn" style="margin-right: 20px">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-backspace-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"
-                ></path>
-              </svg>
-              <b>CLOSE</b>
-            </button>
+                    <strong class="h4 text-black">Application Setup</strong>
+                    <button type="button" class="btn-close btn-dark float-end close_btn" aria-label="Close"></button>
+
+                    <hr />
+
                     <form autocomplete="off" aria-autocomplete="off" id="update-setting-form">
                         <div class="input-group input-group-lg mb-1">
-                            <b for="exampleFormControlInput1" class="form-label">Country</b>
+                            <b for="exampleFormControlInput1" class="form-label lead">Country</b
+                >
 
-                            <div class="input-group mb-1">
-                                <span class="input-group-text">&nbsp; <span>+</span
-                    ><span class="txt-dail-code">233</span> &nbsp;</span>
-                                &nbsp;&nbsp;
+                <div class="input-group input-group-lg mb-1">
+                  <span class="input-group-text"
+                    >&nbsp; <span>+</span
+                    ><span class="txt-dail-code">233</span> &nbsp;</span
+                  >
+                  &nbsp;&nbsp;
 
-                                <select class="form-select form-select-lg mb-1 country_list" id="country" aria-label=".form-select-lg example" required>
+                  <input
+                    type="text"
+                    class="form-control country"
+                    id="country"
+                    name="country"
+                    placeholder=""
+                    required
+                    readonly
+                  />
+
+                  <!-- <select class="form-select form-select-lg mb-1 country_list" id="country" aria-label=".form-select-lg example" required>
                     <option value="">-- Select Country --</option>
-                  </select>
-                            </div>
-                        </div>
+                  </select> -->
+                </div>
+              </div>
 
-                        <div class="input-group input-group-lg mb-1">
-                            <b for="exampleFormControlInput1" class="form-label">Branch</b>
+              <div class="input-group input-group-lg mb-1">
+                <b for="exampleFormControlInput1" class="form-label lead"
+                  >Branch</b
+                >
 
-                            <div class="input-group mb-1">
-                                <select class="form-select form-select-lg mb-1 branch_list" id="branch" required>
+                <div class="input-group mb-1">
+                  <select
+                    class="form-select form-select-lg mb-1 branch_list"
+                    id="branch"
+                    required
+                  >
                     <option value="">-- Select Branch --</option>
                   </select>
-                            </div>
-                        </div>
+                </div>
+              </div>
 
-                        <div class="input-group input-group-lg mb-2">
-                            <b for="exampleFormControlInput1" class="form-label">Event</b>
+              <div class="input-group input-group-lg mb-2">
+                <b for="exampleFormControlInput1" class="form-label lead"
+                  >Event</b
+                >
 
-                            <div class="input-group mb-1">
-                                <select class="form-select form-select-lg mb-1 event_list" id="event" aria-label=".form-select-lg example" required>
+                <div class="input-group mb-1">
+                  <select
+                    class="form-select form-select-lg mb-1 event_list"
+                    id="event"
+                    aria-label=".form-select-lg example"
+                    required
+                  >
                     <option value="">-- Select Event --</option>
                   </select>
-                            </div>
-                        </div>
+                </div>
+              </div>
 
-                        <div class="d-grid gap-2">
-                            <button type="submit" id="submit-settings-form-btn loading-page" class="btn btn-primary btn-lg">
+              <div class="d-grid gap-2">
+                <button
+                  type="submit"
+                  id="submit-settings-form-btn loading-page"
+                  class="btn btn-primary btn-lg"
+                >
                   Submit
                 </button>
-                        </div>
+              </div>
 
-                        <hr />
-                        <span class="text-danger float-end reset-app" data-bs-toggle="modal" data-bs-target="#resetModal">RESET APP</span
+              <hr />
+              <strong
+                class="text-danger float-end reset-app"
+                data-bs-toggle="modal"
+                data-bs-target="#resetModal"
+                style="cursor: pointer"
+                >Reset App</strong
               >
             </form>
           </div>

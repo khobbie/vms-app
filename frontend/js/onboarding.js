@@ -35,6 +35,8 @@ $(document).ready(function() {
         e.preventDefault();
 
 
+
+
         Swal.showLoading();
 
 
@@ -58,6 +60,7 @@ $(document).ready(function() {
             url: base_url + "/onboarding-company",
             data: data,
             success: function(res) {
+                console.log(res);
                 if (res.code == "000") {
 
 
@@ -71,6 +74,7 @@ $(document).ready(function() {
                         eventName: "",
                         eventLocation: "",
                         location: "",
+                        countryCode: res.data.dial_code
                     });
 
                     localStorage.has_settings = false
@@ -84,6 +88,7 @@ $(document).ready(function() {
                     showAlert("success", message, 6000);
                     Swal.showLoading();
                     setTimeout(() => {
+                        // return false;
                         window.location = "welcome.html";
                     }, 6000);
                     // $(".visitor-form-display").css("display", "none");
@@ -93,7 +98,7 @@ $(document).ready(function() {
                     $("#onboard-company-form-btn").text("Submit");
                     showAlert("error", res.message, 2700);
                 }
-                console.log(res);
+
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 showAlert("error", "Server error");

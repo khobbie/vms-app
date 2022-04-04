@@ -17,6 +17,8 @@ $(document).ready(function() {
     let company = JSON.parse(localStorage.company)
     let settings = JSON.parse(localStorage.settings)
 
+    $("#country").val(company.country);
+
     $(".txt-welcome-company-name").text(company.name)
     $(".txt-welcome-branch-name").text(settings.branchName)
     $(".txt-welcome-event-name").text(settings.eventName)
@@ -92,23 +94,23 @@ $(document).ready(function() {
                     let branches = res.data.branches;
                     let events = res.data.events;
 
-                    if (countries.length > 0) {
-                        let country_selected = ""
-                        countries.map((country) => {
-                            country_selected = country.dail_code == company.dail_code ? "selected" : ""
+                    // if (countries.length > 0) {
+                    //     let country_selected = ""
+                    //     countries.map((country) => {
+                    //         country_selected = country.dial_code == company.dial_code ? "selected" : ""
 
-                            $(".country_list").append(`
-                                    <option value="${country.dail_code}" ${country_selected}>${country.country}</option>
-                                `);
-                        });
-                    }
+                    //         $(".country_list").append(`
+                    //                 <option value="${country.dial_code}" ${country_selected}>${country.country}</option>
+                    //             `);
+                    //     });
+                    // }
 
                     if (branches.length > 0) {
                         branches.map((branch) => {
                             let branch_selected = ""
                             branch_selected = branch.uuid == settings.branchId ? "selected" : ""
                             $(".branch_list").append(`
-                                    <option value="${branch.uuid + '-' + branch.name + '-' + branch.location}" ${branch_selected}>${branch.name}</option>
+                                    <option value="${branch.uuid + '|' + branch.name + '|' + branch.location}" ${branch_selected}>${branch.name}</option>
                                 `);
                         });
                     }
@@ -118,7 +120,7 @@ $(document).ready(function() {
                             let event_selected = ""
                             event_selected = event.uuid == settings.eventId ? "selected" : ""
                             $(".event_list").append(`
-                                    <option value="${event.uuid + '-' + event.name + '-' + event.location}" ${event_selected}>${event.name}</option>
+                                    <option value="${event.uuid + '|' + event.name + '|' + event.location}" ${event_selected}>${event.name}</option>
                                 `);
                         });
                     }
@@ -190,17 +192,17 @@ $(document).ready(function() {
 
 
 
-        let country_dail_code = $("#country").val();
+        // let country_dial_code = $("#country").val();
         let branch_list = $("#branch").val();
         let event_list = $("#event").val();
         console.log(branch_list)
 
-        let branch = branch_list.split("-")
-        let event = event_list.split("-")
+        let branch = branch_list.split("|")
+        let event = event_list.split("|")
 
 
         settings = {
-            countryCode: country_dail_code,
+            countryCode: company.dial_code,
             branchId: branch[0],
             branchName: branch[1],
             branchLocation: branch[2],
@@ -210,12 +212,25 @@ $(document).ready(function() {
             location: company.country,
         }
 
+        localStorage.clear();
+
+        // return false;
+        // localStorage.setItem("company", JSON.stringify(company))
+        // localStorage.setItem("settings", JSON.stringify(settings))
+        // localStorage.setItem("has_settings", "true")
+
         localStorage.company = JSON.stringify(company)
         localStorage.settings = JSON.stringify(settings)
         localStorage.has_settings = "true"
 
         showAlert("success", "Application setup successful", 4000);
-        $(".settings-form-display").css("display", "none");
-        $(".visitor-welcome-display").css("display", "block");
+
+        setTimeout(() => {
+            // return false;
+            window.location = "welcome.html";
+        }, 4000);
+
+        // $(".settings-form-display").css("display", "none");
+        // $(".visitor-welcome-display").css("display", "block");
     });
 });

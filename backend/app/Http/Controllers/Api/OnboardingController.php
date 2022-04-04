@@ -33,8 +33,8 @@ class OnboardingController extends Controller
         }
 
 
-        $company_id = $request->company_id;
-        $company_onboarding_id = $request->company_onboarding_id;
+        $company_id = strtoupper($request->company_id);
+        $company_onboarding_id = strtoupper($request->company_onboarding_id);
 
         $company = CompanyInfoModel::where('company_id', $company_id)
             ->where('onboarding_id', $company_onboarding_id)->first();

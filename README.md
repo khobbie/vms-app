@@ -24,3 +24,8 @@ Rename `'env.example'` to `'.env'` <br>
     cd frontend
 Run and launch `'/frontend/welcome.html'` in local server to start application.
 
+### Test Onboarding details 
+Company ID: `2783310` <br>
+Onboarding ID: `A72GUIB`
+
+

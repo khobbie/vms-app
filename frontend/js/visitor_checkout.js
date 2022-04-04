@@ -38,6 +38,13 @@ $(document).ready(function() {
         }
     }
 
+    $('#customer_id').keyup(function(e) {
+
+        $(this).val($(this).val().replace(/^0+/, ''))
+
+    });
+
+
     $(".resend-checkout-code").click(function(e) {
         e.preventDefault();
         Swal.showLoading();

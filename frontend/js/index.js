@@ -12,6 +12,9 @@ $(document).ready(function() {
     let company = JSON.parse(localStorage.company)
     let settings = JSON.parse(localStorage.settings)
 
+
+    $(".dial_code").text(company.dial_code);
+
     var retry_count = 0;
 
     function showAlert(icon, message, timer = "") {
@@ -36,6 +39,12 @@ $(document).ready(function() {
     $.ajaxSetup({
         timeout: 3000,
         retryAfter: 7000,
+    });
+
+    $('#phone_number').keyup(function(e) {
+
+        $(this).val($(this).val().replace(/^0+/, ''))
+
     });
 
     function getCompanyCategories() {
